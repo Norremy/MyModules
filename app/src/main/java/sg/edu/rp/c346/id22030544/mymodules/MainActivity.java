@@ -10,43 +10,48 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    TextView tvC235;
     TextView tvC346;
+    TextView tvC235;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tvC235 = findViewById(R.id.tvC235);
         tvC346 = findViewById(R.id.tvC346);
-        ArrayList<String> template = new ArrayList<String>();
-        template.add("Module Code: ");
-        template.add("Module Name: ");
-        template.add("Academic Year: ");
-        template.add("Semester: ");
-        template.add("Module Credit: ");
-        template.add("Venue: ");
-        ArrayList<String> moduleCode = new ArrayList<String>();
-        moduleCode.add("C235");
-        moduleCode.add("C346");
+        tvC235 = findViewById(R.id.tvC235);
+        ArrayList<Module> modules = new ArrayList<Module>();
+        modules.add(new Module("C346","Android Programming",2020,1,4,"W64M"));
+        modules.add(new Module("C235","IT Security",2020,1,4,"W65M"));
 
-        ArrayList<String> moduleName = new ArrayList<String>();
-        moduleName.add("Android Programming");
-        moduleName.add("IT security");
+        tvC235.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(int i =0; i<modules.size();i++){
+                    if(modules.get(i).getModuleCode().equals("C235")){
+                        Intent intent = new Intent(MainActivity.this, ModuleDetailActivity.class);
+                        intent.putExtra("display","Module Code: " + modules.get(i).getModuleCode() + "\nModule Name: " + modules.get(i).getModuleName() + "\nAcademic Year: " + modules.get(i).getAcademicYear() + "\nSemester: " + modules.get(i).getSemester() + "\nModule Credit: " + modules.get(i).getModuleCredit() + "\nVenue: " + modules.get(i).getVenue());
 
-        ArrayList<String> venue = new ArrayList<String>();
-        venue.add("W65D");
-        venue.add("W66D");
+                        startActivity(intent);
+                    }
+                }
 
 
-
-
-
+            }
+        });
         tvC346.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent
+                for(int i =0; i<modules.size();i++){
+                    if(modules.get(i).getModuleCode().equals("C346")){
+                        Intent intent = new Intent(MainActivity.this, ModuleDetailActivity.class);
+                        intent.putExtra("display","Module Code: " + modules.get(i).getModuleCode() + "\nModule Name: " + modules.get(i).getModuleName() + "\nAcademic Year" + modules.get(i).getAcademicYear() + "\nSemester: " + modules.get(i).getSemester() + "\nModule Credit: " + modules.get(i).getModuleCredit() + "\nVenue: " + modules.get(i).getVenue());
+
+                        startActivity(intent);
+                    }
+                }
+
+
             }
         });
     }
