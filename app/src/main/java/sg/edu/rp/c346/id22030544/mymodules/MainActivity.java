@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 for(int i =0; i<modules.size();i++){
                     if(modules.get(i).getModuleCode().equals("C346")){
                         Intent intent = new Intent(MainActivity.this, ModuleDetailActivity.class);
-                        intent.putExtra("display","Module Code: " + modules.get(i).getModuleCode() + "\nModule Name: " + modules.get(i).getModuleName() + "\nAcademic Year" + modules.get(i).getAcademicYear() + "\nSemester: " + modules.get(i).getSemester() + "\nModule Credit: " + modules.get(i).getModuleCredit() + "\nVenue: " + modules.get(i).getVenue());
+                        intent.putExtra("display","Module Code: " + modules.get(i).getModuleCode() + "\nModule Name: " + modules.get(i).getModuleName() + "\nAcademic Year: " + modules.get(i).getAcademicYear() + "\nSemester: " + modules.get(i).getSemester() + "\nModule Credit: " + modules.get(i).getModuleCredit() + "\nVenue: " + modules.get(i).getVenue());
 
                         startActivity(intent);
                     }
